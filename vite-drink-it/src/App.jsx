@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,26 +8,35 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios'
 
 import LoginPage from '../components/LoginPage'
+import SignInPage from '../components/SignInPage'
+import ListBarsPage from '../components/ListBarsPage'
+import MapBarsPage from '../components/MapBarsPage'
+import { NoMatch } from '../components/NoMatchPage'
+import BarBarasBacke from '../components/BarPages/BarasBacke'
+import BarGeneric from '../components/BarPages/BarGenericPage'
+import { AuthProvider } from '../utils/authentification';
 
 function App() {
     const [count, setCount] = useState(0)
     const [quote, setQuote] = useState('')
 
     return (
-        <Container fluid className="App content">
-            <Row className="justify-content-center">
-                <Col lg={3} md={5} sm={8} xs={12}>
-                    <img src="/Logo-without-bg.svg" className="logo" alt="Drink'it logo" />
-                </Col>
-            </Row>
+        <AuthProvider>
+            <Routes>
+                <Route path='/' element={<LoginPage></LoginPage>}> </Route>
+                <Route path='/home' element={<LoginPage></LoginPage>}> </Route>
+                <Route path='/SignIn' element={<SignInPage></SignInPage>}> </Route>
+                <Route path='/ListBars' element={<ListBarsPage></ListBarsPage>}>
+                    {/* Nested Routes */}
+                    <Route path='BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route>
+                    <Route path=':barName' element={<BarGeneric></BarGeneric>}> </Route>
+                </Route>
+                <Route path='/MapBars' element={<MapBarsPage></MapBarsPage>}> </Route>
+                <Route path='*' element={<NoMatch></NoMatch>} ></Route>
 
-            <Row>
-                <h1 className="app-name">Drink'it</h1>
-            </Row>
-
-            <LoginPage></LoginPage>
-                            
-        </Container>
+                {/* <Route path='/ListBar/BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route> */}
+            </Routes>
+        </AuthProvider>
     )
 }
 
