@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useAuth } from '../utils/authentification';
 
 // import { View, Image, StyleSheet, Dimensions, Alert } from 'react-native';
 // import { Block, Button, Input, NavBar, Text } from 'galio-framework';
@@ -16,7 +17,14 @@ export default function LoginPage() {
 
     const navigate = useNavigate();
     const handleOnClick = useCallback( () => navigate('/SignIn'));
+    const handleLogin = () => {
+        auth.login(user)
+        navigate('/ListBars')
+    }
     //const handleOnClick = useCallback( () => navigate('/SignIn'), [navigate]);
+
+    const [user, setUser] = useState('')
+    const auth = useAuth()
 
     return (
 
@@ -36,8 +44,10 @@ export default function LoginPage() {
             <h2>Who are you?</h2>
             <form action="/home" id="signup">
                 <p>
-                    <label>Email address</label><br/>
-                    <input type="text" name="first_name"/>
+                    <label>
+                        Email address:{' '}<br/>
+                        <input type="text" name="first_name" onChange={(e) => setUser(e.target.value)}/>
+                    </label>
                 </p>
                 <p>
                     <label>Password</label><br/>
@@ -48,8 +58,9 @@ export default function LoginPage() {
                         SignIn
                     </button>
 
-                    <button id="sub_btn" type="submit">
-                        <Link to='/ListBars'>Login</Link>
+                    <button id="sub_btn" type="submit" onClick={handleLogin}>
+                        Login
+                        {/* <Link to='/ListBars'>Login</Link> */}
                     </button>
                     {/* <Link to="/forget-password"><label className="right-label">Forget password?</label></Link> */}
                 </p>
