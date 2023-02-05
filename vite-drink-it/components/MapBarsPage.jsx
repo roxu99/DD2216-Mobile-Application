@@ -9,7 +9,7 @@ export default function MapBarsPage() {
     return (
         <Container fluid className="List Bar Content">
             <Col xs={12}>
-                <h2>New?</h2>
+                <h2>Map</h2>
                 <form action="/home">
                     <p>
                         <label>Email address</label><br/>

@@ -14,6 +14,7 @@ import MapBarsPage from '../components/MapBarsPage'
 import { NoMatch } from '../components/NoMatchPage'
 import BarBarasBacke from '../components/BarPages/BarasBacke'
 import BarGeneric from '../components/BarPages/BarGenericPage'
+import MyFavoriteBars from '../components/MyFavoritePage';
 import { AuthProvider } from '../utils/authentification';
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
         <AuthProvider>
             <Routes>
                 <Route path='/' element={<LoginPage></LoginPage>}> </Route>
-                <Route path='/home' element={<LoginPage></LoginPage>}> </Route>
+                <Route path='/login' element={<LoginPage></LoginPage>}> </Route>
                 <Route path='/SignIn' element={<SignInPage></SignInPage>}> </Route>
                 <Route path='/ListBars' element={<ListBarsPage></ListBarsPage>}>
                     {/* Nested Routes */}
@@ -32,6 +33,7 @@ function App() {
                     <Route path=':barName' element={<BarGeneric></BarGeneric>}> </Route>
                 </Route>
                 <Route path='/MapBars' element={<MapBarsPage></MapBarsPage>}> </Route>
+                <Route path='/MyFavorites' element={<MyFavoriteBars></MyFavoriteBars>}> </Route>
                 <Route path='*' element={<NoMatch></NoMatch>} ></Route>
 
                 {/* <Route path='/ListBar/BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route> */}
