@@ -1,7 +1,7 @@
 #root {
-    //  max-width: 1280px;
+ /* max-width: 1280px; */
     margin: 0 auto;
-    //  padding: 2rem;
+    /* //  padding: 2rem; */
     text-align: center;
     background-color: #37474f;
     min-height: 100vh;
@@ -56,4 +56,18 @@
 }
 #signup>input{
     max-width: 100%;
+}
+
+#NavBar{
+    position: fixed;
+    height: 100px;
+    width: 100vw;
+    background-color: #888;
+    z-index: 5;
+    align-items: end;
+    bottom: 0;
+}
+
+.Content{
+    z-index: 1;
 }
