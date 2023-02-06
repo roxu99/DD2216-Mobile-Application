@@ -4,28 +4,40 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBar } from './NavBar';
+import { BarComputer } from './BarComputer';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import './css/MapBarsPage.css'
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 export default function MapBarsPage() {
+    const position = [59.346, 18.071];
     return (
         <Container fluid className="List Bar Content">
-            <Col xs={12}>
-                <h2>Map</h2>
-                <form action="/home">
-                    <p>
-                        <label>Email address</label><br/>
-                        <input type="text" name="first_name" required />
-                    </p>
-                    <p>
-                        <label>Password</label><br/>
-                        <input type="password" name="password" required />
-                    </p>
-                    <p>
-                        <button id="sign_btn" type="submit">SignIn</button>
-                        {/* <Link to="/forget-password"><label className="right-label">Forget password?</label></Link> */}
-                    </p>
-                </form>
-                <NavBar></NavBar>
-            </Col>
+            <Row>
+                <Col md={2} className="d-md-block d-none">
+                    <BarComputer></BarComputer>
+                </Col>
+                <Col md={10} sm={12} className='Map'>
+                    <div id="map">
+                        <MapContainer
+                            className="markercluster-map"
+                            center={position}
+                            zoom={13}
+                            maxZoom={18}
+                        >
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            />
+
+                            <Marker position={[49.8397, 24.0297]} />
+                            <Marker position={[52.2297, 21.0122]} />
+                            <Marker position={[51.5074, -0.0901]} />
+                        </MapContainer>
+                    </div>
+                </Col>
+            </Row>
         </Container>
+
     )
 }
