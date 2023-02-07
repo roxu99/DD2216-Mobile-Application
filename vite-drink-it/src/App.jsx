@@ -16,7 +16,6 @@ import BarBarasBacke from '../components/BarPages/BarasBacke'
 import BarGeneric from '../components/BarPages/BarGenericPage'
 import MyFavoriteBars from '../components/MyFavoritePage';
 import { AuthProvider } from '../utils/authentification';
-import { NavBar } from '../components/NavBar';
 
 function App() {
     const [count, setCount] = useState(0)
@@ -39,7 +38,6 @@ function App() {
 
                 {/* <Route path='/ListBar/BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route> */}
             </Routes>
-            <NavBar className="d-md-none"></NavBar>
         </AuthProvider>
     )
 }
