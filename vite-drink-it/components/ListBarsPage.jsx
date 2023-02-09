@@ -5,6 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
 
+
+
+
+
+
 export default function ListBarsPage() {
     const barLinkStyle = ({ isActive }) => {
         return {
@@ -12,6 +17,30 @@ export default function ListBarsPage() {
         }
     }
 
+    function printBar(id) {
+        const barNames = ["Carmen", "Baras Backe", "Lion's", "BlackElk"];
+        const name = barNames.at(id)
+        return (
+            <Link to={'../Bar/'+id}>
+                {name}
+            </Link>
+        )
+    }
+
+
+    function GetListBar() {
+        const barIds = Array.from(Array(4).keys());
+        return (
+            <div>
+                {barIds.map(id => (
+                    <Row>
+                        {printBar(id)}
+                    </Row>
+                ))
+                }
+            </div>
+        )
+    }
     const [searchParams, setSearchParams] = useSearchParams()
     const showOpenBars = searchParams.get('filter') == 'open'
 
@@ -38,25 +67,24 @@ export default function ListBarsPage() {
                                 <h2>All bars</h2>
                             )}
                         </div>
+                        <GetListBar></GetListBar>
 
                         {/* <NavLink style={barLinkStyle} to='/ListBars/BarasBacke'> */}
-                        <NavLink style={barLinkStyle} to='BarasBacke'>
+                        <NavLink style={barLinkStyle} to='../Bar/BarasBacke'>
                             Baras
                         </NavLink>
 
-                        <NavLink style={barLinkStyle} to='/ListBars/Carmen'>
+                        <NavLink style={barLinkStyle} to='/Bar/Carmen'>
                             Carmen
                         </NavLink>
 
-                        <Link to='BlackElk'>Black Elk</Link>
-                        <NavLink to='BlackElk'>Black Elk</NavLink>
+                        <Link to='/Bar/BlackElk'>Black Elk</Link>
+                        <NavLink to='/Bar/BlackElk'>Black Elk</NavLink>
 
 
                     </Col>
                     <Outlet></Outlet>
                 </Row>
-
-
             </Container>
             <NavBarMobile></NavBarMobile>
         </div>

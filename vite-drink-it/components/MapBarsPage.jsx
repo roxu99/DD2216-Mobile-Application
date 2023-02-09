@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import  { React,useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -30,9 +30,9 @@ export default function MapBarsPage() {
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                 />
-                                <BarPosition position={[59.346, 18.071]} price={"50"}></BarPosition>
-                                <BarPosition position={[59.3146, 18.0271]} price={"40"}></BarPosition>
-                                <BarPosition position={[59.3746, 18.0371]} price={"20"}></BarPosition>
+                                <BarPosition position={[59.346, 18.071]} price={"50"} id={"0"} name={"First Bar"}></BarPosition>
+                                <BarPosition position={[59.3146, 18.0271]} price={"40"} id={"1"} name={"Second Bar"}></BarPosition>
+                                <BarPosition position={[59.3746, 18.0371]} price={"20"} id={"2"} name={"Third Bar"}></BarPosition>
                             </MapContainer>
                         </div>
                     </Col>
@@ -41,15 +41,35 @@ export default function MapBarsPage() {
             <NavBarMobile></NavBarMobile>
         </div>
     )
-}
+} 
 
 function BarPosition(props) {
+    let navigate = useNavigate(); 
+    const eventHandlers = useMemo(
+        () => ({
+          click() {
+            let path = "../Bar/"+props.id;
+            navigate(path);
+              },
+        }),
+        [],
+      )
     return (
-        <CircleMarker
-            center={props.position}
-            pathOptions={{ color: 'red' }}
-            radius={20}
-            fillOpacity={0.5}>
-            <Tooltip permanent direction='center' opacity={1} className='text'><b>{props.price} kr</b></Tooltip>
-        </CircleMarker>)
+        <div>
+            <CircleMarker
+                center={props.position}
+                pathOptions={{ color: 'red' }}
+                radius={20}
+                fillOpacity={0.5} 
+                eventHandlers={eventHandlers}>
+                <Tooltip direction='top'>{props.name}</Tooltip>
+            </CircleMarker>
+            <CircleMarker
+                center={props.position}
+                pathOptions={{ color: 'red' }}
+                radius={0}
+                fillOpacity={0.5}>
+                <Tooltip permanent direction='center' opacity={1} className='price'><b>{props.price} kr</b></Tooltip>
+            </CircleMarker>
+        </div>)
 }

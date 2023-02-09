@@ -28,9 +28,11 @@ function App() {
                 <Route path='/login' element={<LoginPage></LoginPage>}> </Route>
                 <Route path='/SignIn' element={<SignInPage></SignInPage>}> </Route>
                 <Route path='/ListBars' element={<ListBarsPage></ListBarsPage>}>
+                </Route>
+                <Route path='/Bar'>
                     {/* Nested Routes */}
                     <Route path='BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route>
-                    <Route path=':barName' element={<BarGeneric></BarGeneric>}> </Route>
+                    <Route path=':barId' element={<BarGeneric></BarGeneric>}> </Route>
                 </Route>
                 <Route path='/MapBars' element={<MapBarsPage></MapBarsPage>}> </Route>
                 <Route path='/MyFavorites' element={<MyFavoriteBars></MyFavoriteBars>}> </Route>
