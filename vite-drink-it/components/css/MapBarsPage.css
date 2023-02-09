@@ -7,3 +7,9 @@
 .leaflet-container{
     height: 100%;
 }
+
+.leaflet-tooltip {
+    background: unset;
+    box-shadow: none;
+    border: none;
+}

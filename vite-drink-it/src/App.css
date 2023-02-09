@@ -60,13 +60,34 @@
 
 #NavBarMobile{
     position: fixed;
-    height: 100px;
+    height: 80px;
     width: 100vw;
     background-color: #888;
     z-index: 99999;
     bottom: 0;
     left:0;
+    align-items: center;
+    display: flex;
 }
+
+#NavBarMobile>.row{
+    width: 100%;
+}
+
+a{
+    color: #ffdd55!important;
+}
+
+.ColBar{
+    width: 33vw;
+    max-width: 33vw;
+}
+
+.ItemBar>svg{
+    width: min(10vw,35px);
+    height: min(10vw,35px);
+}
+
 .Page{
     width: 100%;
 }

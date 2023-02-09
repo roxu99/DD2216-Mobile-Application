@@ -1,4 +1,4 @@
-import { MapFill, PinMapFill, ListUl } from 'react-bootstrap-icons'
+import { MapFill, PinMapFill, ListUl, BookmarkHeartFill } from 'react-bootstrap-icons'
 import Col from 'react-bootstrap/esm/Col'
 import Container from 'react-bootstrap/esm/Container'
 import Row from 'react-bootstrap/esm/Row'
@@ -8,18 +8,16 @@ import { AuthProvider } from '../utils/authentification'
 export const NavBarMobile = () => {
     return (
         <div id="NavBarMobile" className='d-md-none'>
-            <Row>
-                <Col >
-                    <Link to='/MapBars'><MapFill /></Link>
-                </Col>
-                <Col >
-                    <Link to='/ListBars'>ListBars</Link>
-                </Col>
-                <Col >
-                    <NavLink to='/MyFavorites'>MyFavotiteBars</NavLink>
-                </Col>
-                {/* {!auth.user && (<Link to='/login'>MyFavotiteBars</Link>)} */}
-            </Row>
+            <div className='ColBar'>
+                <Link to='/MapBars' className='ItemBar'><MapFill /></Link>
+            </div>
+            <div className='ColBar'>
+                <Link to='/ListBars' className='ItemBar'><ListUl /></Link>
+            </div>
+            <div className='ColBar'>
+                <NavLink to='/MyFavorites' className='ItemBar'><BookmarkHeartFill /></NavLink>
+            </div>
+            {/* {!auth.user && (<Link to='/login'>MyFavotiteBars</Link>)} */}
         </div>
     )
 }
