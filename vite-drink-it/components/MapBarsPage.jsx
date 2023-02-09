@@ -33,9 +33,6 @@ export default function MapBarsPage() {
                                 <BarPosition position={[59.346, 18.071]} price={"50"}></BarPosition>
                                 <BarPosition position={[59.3146, 18.0271]} price={"40"}></BarPosition>
                                 <BarPosition position={[59.3746, 18.0371]} price={"20"}></BarPosition>
-                                <Marker position={[49.8397, 24.0297]} />
-                                <Marker position={[52.2297, 21.0122]} />
-                                <Marker position={[51.5074, -0.0901]} />
                             </MapContainer>
                         </div>
                     </Col>
