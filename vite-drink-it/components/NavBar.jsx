@@ -33,6 +33,9 @@ export const NavBarComputer = () => {
             <Row>
                 <NavLink to='/ListBars'> <ListUl /> List </NavLink>
             </Row>
+            <Row>
+                <NavLink to='/MyFavorites'> <SuitHeartFill /> Favorites </NavLink>
+            </Row>
         </Container>
     )
 }
