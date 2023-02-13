@@ -7,6 +7,7 @@ import { NavBarMobile, NavBarComputer } from '../NavBar';
 import '../css/BarGenericPage.css';
 import { HandThumbsUp, HandThumbsUpFill, HandThumbsDown, HandThumbsDownFill } from 'react-bootstrap-icons'
 import barImage0 from './img/bar0.jpg'
+import { Table } from 'react-bootstrap';
 //import BARIMAGES from './images';
 
 export default function BarGeneric() {
@@ -20,7 +21,8 @@ export default function BarGeneric() {
                             "Götgatan 33, 116 21 Stockholm", 
                             "Sveavägen 74, 113 59 Stockholm",
                             "Sveavägen 61, 113 59 Stockholm" ]
-    const suggestion = [42, 40]
+    const suggestion = [[42, 40], [], [], []]
+    const suggBool = true ? suggestion[barId]!=[] : false
 
     return (
         <div className='Page'>
@@ -32,21 +34,50 @@ export default function BarGeneric() {
                     <Col md={10} sm={12} xs={12} className='Bar information'>
                         <h2 class="title">{barNames.at(barId)}</h2>
                         {/* <img src={require('../../src/img/bar0.jpg').default} ></img> */}
-                        <img alt="Bar's image" src={barImage0} style={{height:'20vh', width:'80%'}}></img>
+                        <img alt="Bar's image" src={barImage0} style={{height:'20vh'}}></img>
+                        
 
-                        <p>Address: {barAddress[barId]}</p>
-                        <p>Cheapest price: {barCheapestPrice[barId]} kr</p>
-                        <p>Price per liter: {barCheapestPrice[barId]/correspondVolume[barId]*100} kr/L</p>
-                        <p>Distance: 100m</p>
-                        <p>Travel Time: 2min walk</p>
+                        <Table class="table table-borderless text-white">
+                            
+                            <tbody>
+                                {/* <tr>
+                                    <th scope="row"> Address</th>
+                                    <td>{barAddress[barId]}</td>
+                                </tr> */}
+                                <tr>
+                                    <th scope="row">Cheapest Price</th>
+                                    <td>{barCheapestPrice[barId]} kr</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Price per liter</th>
+                                    <td>{barCheapestPrice[barId]/correspondVolume[barId]*100} kr/L</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Distance</th>
+                                    <td>100m</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Travel Time</th>
+                                    <td>2min walk</td>
+                                </tr>
+                            </tbody>
+                        </Table>
 
                         <button>Suggest new price</button>
 
                         <p>Validate the suggestion <HandThumbsUp></HandThumbsUp></p>
 
+                        {function () {
+                            if({suggBool}) {
+                                return {
+                                    
+                                }
 
-                        <p>Other suggestion</p>
-                        <p><HandThumbsUp></HandThumbsUp> {suggestion[0]}kr/{suggestion[1]}cL <HandThumbsDown></HandThumbsDown></p>
+                            }
+                        }}
+
+                        <p>Other suggestion</p>                              
+                        <p><HandThumbsUp></HandThumbsUp> {suggestion[0]} kr/ {suggestion[1]} cL <HandThumbsDown></HandThumbsDown></p>
 
                         <button>Go There</button>
 
@@ -64,3 +95,12 @@ function changeIcon(){
 
     }
 }
+
+// function displayOtherSuggestion(suggBool, suggestion) {
+//     if(suggBool==true) {
+//         return {
+//             <HandThumbsUp></HandThumbsUp> {suggestion[0]}kr/{suggestion[1]}cL <HandThumbsDown></HandThumbsDown>
+//         }
+//     }
+
+// }
