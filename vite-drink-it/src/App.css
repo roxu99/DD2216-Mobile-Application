@@ -3,8 +3,8 @@
     margin: 0 auto;
     /* //  padding: 2rem; */
     text-align: center;
-    color: rgba(255, 241, 232, 0.87);
-    background-color: #37474f;
+    color: rgba(34, 34, 34, 0.87);
+    background-color: #CEB9AA;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@
     width: 100%;
     padding: 1.5em;
 }
-Z
+
 
 .card {
     padding: 2em;
@@ -40,7 +40,7 @@ Z
     position: fixed;
     height: 10vh;
     width: 100vw;
-    background-color: #888;
+    background-color: #A16842;
     z-index: 99999;
     bottom: 0;
     /* left:0; */

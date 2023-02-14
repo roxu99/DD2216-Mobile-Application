@@ -23,7 +23,7 @@ export default function BarGeneric() {
                             "Sveavägen 61, 113 59 Stockholm" ]
     const suggestion = [[42, 40], [], [], []]
     const suggBool = true ? suggestion[barId]!=[] : false
-
+    
     return (
         <div className='Page'>
             <Container className="Bar Content">
@@ -32,7 +32,7 @@ export default function BarGeneric() {
                         <NavBarComputer></NavBarComputer>
                     </Col>
                     <Col md={10} sm={12} xs={12} className='Bar information'>
-                        <h2 class="title">{barNames.at(barId)}</h2>
+                        <h3 class="title">{barNames.at(barId)}</h3>
                         {/* <img src={require('../../src/img/bar0.jpg').default} ></img> */}
                         <img alt="Bar's image" src={barImage0} style={{height:'20vh'}}></img>
                         

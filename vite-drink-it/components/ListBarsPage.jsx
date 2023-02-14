@@ -56,9 +56,9 @@ export default function ListBarsPage() {
                         <button id="open" onClick={() => setSearchParams({ filter: 'open' })}>
                             Currently Open
                         </button>
-                        <button id="reset" onClick={() => setSearchParams({})}>
+                        <Col><button id="reset" onClick={() => setSearchParams({})}>
                             Reset Filter
-                        </button>
+                        </button></Col>
 
                         <div>
                             {showOpenBars ? (
