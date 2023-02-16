@@ -16,6 +16,7 @@ import BarBarasBacke from '../components/BarPages/BarasBacke'
 import BarGeneric from '../components/BarPages/BarGenericPage'
 import MyFavoriteBars from '../components/MyFavoritePage';
 import { AuthProvider } from '../utils/authentification';
+import PopUpForm from '../components/BarPages/BarPopUpForm'
 
 function App() {
     const [count, setCount] = useState(0)
@@ -34,6 +35,7 @@ function App() {
                     <Route path='BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route>
                     <Route path=':barId' element={<BarGeneric></BarGeneric>}> </Route>
                 </Route>
+                <Route path='NewSuggestionForm' element={<PopUpForm></PopUpForm>}></Route>
                 <Route path='/MapBars' element={<MapBarsPage></MapBarsPage>}> </Route>
                 <Route path='/MyFavorites' element={<MyFavoriteBars></MyFavoriteBars>}> </Route>
                 <Route path='*' element={<NoMatch></NoMatch>} ></Route>

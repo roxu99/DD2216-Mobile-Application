@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState}from 'react'
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,8 +7,10 @@ import { NavBarMobile, NavBarComputer } from '../NavBar';
 import '../css/BarGenericPage.css';
 import { HandThumbsUp, HandThumbsUpFill, HandThumbsDown, HandThumbsDownFill } from 'react-bootstrap-icons'
 import barImage0 from './img/bar0.jpg'
-import { Table } from 'react-bootstrap';
+import { Modal, Table } from 'react-bootstrap';
+import { popup } from 'leaflet';
 //import BARIMAGES from './images';
+
 
 export default function BarGeneric() {
     const param = useParams()
@@ -24,11 +26,14 @@ export default function BarGeneric() {
     const suggestion = [[42, 40], [], [], []]
     const suggBool = true ? suggestion[barId]!='' : false
 
+    // const [show, setShow] = useState(false)
+    // const handleClose = () => setShow(false)
+    // const handleShow = () => setShow(true)
 
     function ShowOtherSuggestion(bool) {
         if(bool==true) {
             return (
-                <div class="boxed">
+                <div id="suggestion-box" class="boxed">
                 <br></br>
                 <h4>Other suggestion</h4>     
                     <h3><HandThumbsUp id="oth-thumb-left"></HandThumbsUp>
@@ -38,6 +43,19 @@ export default function BarGeneric() {
             )
         }
     }
+
+    function SuggestionForm2() {
+        // pop = window.open('/');
+        var elem = document.getElementById("suggestion-form")
+        // var form = document.createTextNode("zqdefsrdg")
+        // var form = document.createElement("form")
+        // elem.appendChild(form)
+    }
+
+    function SuggestionFormPopUp() {
+        pop = window.open('/NewSuggestionForm');
+    }
+
 
     return (
         <div className='Page'>
@@ -77,12 +95,17 @@ export default function BarGeneric() {
                             </tbody>
                         </Table>
 
-                        <button id="btn-suggestion">Suggest new price</button>
+                        <button id="btn-suggestion" onClick={SuggestionFormPopUp} type="submit">Suggest new price</button>
+                        {/* <Modal>
+
+                        </Modal> */}
+
                         <br></br><br></br>
                         
                         <h3>Validate the suggestion <HandThumbsUp id="val-thumb"></HandThumbsUp></h3>
                         <br></br>
-
+                        
+                        <div id="suggestion-form"></div>
                         {ShowOtherSuggestion(suggBool)}
 
                         <br></br><br></br>
