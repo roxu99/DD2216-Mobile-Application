@@ -5,3 +5,33 @@
 .borderless td, .borderless th {
     border: none
 }
+
+#btn-suggestion {
+    position: relative;
+    left: 20vw;
+}
+
+#val-thumb {
+    position: relative;
+    left: 20px;
+}
+
+#oth-thumb-left {
+    position: relative;
+    right: 20vw
+}
+
+#oth-thumb-right {
+    position: relative;
+    left: 20vw
+}
+
+.red-price {
+    color: red;
+    background-color: #042b29;
+}
+
+.boxed {
+    border: solid 1px;
+    background-color: #042b29;
+}

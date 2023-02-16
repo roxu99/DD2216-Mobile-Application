@@ -45,7 +45,7 @@ export default function BarGeneric() {
                                 </tr> */}
                                 <tr>
                                     <th scope="row">Cheapest Price</th>
-                                    <td>{barCheapestPrice[barId]} kr</td>
+                                    <td class="red-price">{barCheapestPrice[barId]} kr/ {correspondVolume[barId]}cl</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Price per liter</th>
@@ -62,9 +62,12 @@ export default function BarGeneric() {
                             </tbody>
                         </Table>
 
-                        <button>Suggest new price</button>
+                        <button id="btn-suggestion">Suggest new price</button>
+                        <br></br><br></br>
 
-                        <p>Validate the suggestion <HandThumbsUp></HandThumbsUp></p>
+                        
+                        <h3>Validate the suggestion <HandThumbsUp id="val-thumb"></HandThumbsUp></h3>
+                        <br></br>
 
                         {function () {
                             if({suggBool}) {
@@ -75,8 +78,24 @@ export default function BarGeneric() {
                             }
                         }}
 
-                        <p>Other suggestion</p>                              
-                        <p><HandThumbsUp></HandThumbsUp> {suggestion[0]} kr/ {suggestion[1]} cL <HandThumbsDown></HandThumbsDown></p>
+
+                        {/* <h4>Other suggestion</h4>
+                            <Col><h3 id="oth-thumb-left"><HandThumbsUp></HandThumbsUp></h3></Col>
+                            
+                            <Col><h3 class="red-price">{suggestion[0][0]} kr/ {suggestion[0][1]} cL</h3></Col>
+                            <Col><h3 id="oth-thumb-right"><HandThumbsDown></HandThumbsDown></h3></Col>
+
+                        <br></br><br></br> */}
+
+                        <div class="boxed">
+                            <br></br>
+                            <h4>Other suggestion</h4>     
+                                <h3><HandThumbsUp id="oth-thumb-left"></HandThumbsUp>
+                                    <mark class="red-price">{suggestion[0][0]} kr/ {suggestion[0][1]} cL</mark><HandThumbsDown id="oth-thumb-right"></HandThumbsDown></h3>
+                            <br></br>
+                        </div>
+                        <br></br><br></br>
+
 
                         <button>Go There</button>
 
