@@ -4,10 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
-import {barNames,barIds} from './Data'
-
-
-
+import { Table } from 'react-bootstrap';
+import './css/ListBarPage.css'
+import {barNames,barIds, barLiked, barCheapestPrice, correspondVolume, barAddress} from './Data'
 
 
 export default function ListBarsPage() {
@@ -21,9 +20,33 @@ export default function ListBarsPage() {
         // const barNames = ["Carmen", "Baras Backe", "Lion's", "BlackElk"];
         const name = barNames.at(id)
         return (
-            <Link to={'../Bar/'+id}>
-                {name}
-            </Link>
+            <div class="indiv-bar-box">
+                <Link to={'../Bar/'+id}>
+                    <h2>{name}</h2>
+                </Link>
+            
+
+                <Table id="table-generic" class="table">
+                    <tbody class="borderless">
+                        <tr>
+                            <th scope="row">Cheapest Price</th>
+                            <td class="red-price">{barCheapestPrice[id]} kr/ {correspondVolume[id]}cl</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price per liter</th>
+                            <td>{barCheapestPrice[id]/correspondVolume[id]*100} kr/L</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Distance</th>
+                            <td>100m</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Travel Time</th>
+                            <td>2min walk</td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 
@@ -66,19 +89,9 @@ export default function ListBarsPage() {
                                 <h2>All bars</h2>
                             )}
                         </div>
+                        <br></br>
+                        
                         <GetListBar></GetListBar>
-
-                        {/* <NavLink style={barLinkStyle} to='/ListBars/BarasBacke'> */}
-                        <NavLink style={barLinkStyle} to='../Bar/BarasBacke'>
-                            Baras
-                        </NavLink>
-
-                        <NavLink style={barLinkStyle} to='/Bar/Carmen'>
-                            Carmen
-                        </NavLink>
-
-                        <Link to='/Bar/BlackElk'>Black Elk</Link>
-                        <NavLink to='/Bar/BlackElk'>Black Elk</NavLink>
 
 
                     </Col>
