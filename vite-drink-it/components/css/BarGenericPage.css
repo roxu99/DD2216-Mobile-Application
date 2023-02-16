@@ -35,3 +35,8 @@
     border: solid 1px;
     background-color: #042b29;
 }
+
+#fav {
+    position: relative;
+    left: 5vw;
+}
