@@ -39,19 +39,11 @@ export default function ListBarsPage() {
                 <Table id="table-generic" class="table">
                     <tbody class="borderless">
                         <tr>
-                            <th scope="row">Cheapest Price</th>
-                            <td class="red-price">{barCheapestPrice[id]} kr/ {correspondVolume[id]}cl</td>
+                            <th scope="row" class="red-price">{barCheapestPrice[id]} kr/ {correspondVolume[id]}cl</th>
+                            <td >100m</td>
                         </tr>
                         <tr>
-                            <th scope="row">Price per liter</th>
-                            <td>{barCheapestPrice[id]/correspondVolume[id]*100} kr/L</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Distance</th>
-                            <td>100m</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Travel Time</th>
+                            <th scope="row">{barCheapestPrice[id]/correspondVolume[id]*100} kr/L</th>
                             <td>2min walk</td>
                         </tr>
                     </tbody>
