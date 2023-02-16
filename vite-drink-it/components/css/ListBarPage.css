@@ -1,0 +1,20 @@
+.red-price {
+    color: red;
+}
+
+.indiv-bar-box {
+    border: solid 1px;
+}
+
+#table-generic {
+    color: white;
+}
+
+.borderless td, .borderless th {
+    border: none
+}
+
+#fav {
+    position: relative;
+    left: 5vw;
+}
