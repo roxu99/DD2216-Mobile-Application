@@ -37,8 +37,8 @@ export default function BarGeneric() {
                         <img alt="Bar's image" src={barImage0} style={{height:'20vh'}}></img>
                         
 
-                        <Table id="table-generic" class="table table-borderless">
-                            <tbody>
+                        <Table id="table-generic" class="table">
+                            <tbody class="borderless">
                                 {/* <tr>
                                     <th scope="row"> Address</th>
                                     <td>{barAddress[barId]}</td>
