@@ -13,7 +13,7 @@ export default function MapBarsPage() {
     // const position = [51.505, -0.09]
     return (
         <div className='Page'>
-            <Container fluid className="List Bar Content">
+            <Container fluid className="Map Bar Content">
                 <Row>
                     <Col md={2} className="d-md-block d-none">
                         <NavBarComputer></NavBarComputer>
