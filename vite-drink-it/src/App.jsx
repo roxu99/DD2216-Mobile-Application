@@ -18,8 +18,6 @@ import MyFavoriteBars from '../components/MyFavoritePage';
 import { AuthProvider } from '../utils/authentification';
 
 function App() {
-    const [count, setCount] = useState(0)
-    const [quote, setQuote] = useState('')
 
     return (
         <AuthProvider>
