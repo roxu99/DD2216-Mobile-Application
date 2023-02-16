@@ -1,4 +1,4 @@
-import { MapFill, PinMapFill, ListUl, BookmarkHeartFill, SuitHeartFill } from 'react-bootstrap-icons'
+import { MapFill, PinMapFill, ListUl, ListOl, BookmarkHeartFill, SuitHeartFill } from 'react-bootstrap-icons'
 import Col from 'react-bootstrap/esm/Col'
 import Container from 'react-bootstrap/esm/Container'
 import Row from 'react-bootstrap/esm/Row'
@@ -9,15 +9,15 @@ export const NavBarMobile = () => {
     return (
         <div id="NavBarMobile" className='d-md-none'>
             <div className='ColBar'>
-                <Link to='/MapBars' className='ItemBar'><MapFill /></Link>
-                {/* <Link to='/MapBars' className='ItemBar'><PinMapFill></PinMapFill></Link> */}
+                {/* <Link to='/MapBars' className='ItemBar'><MapFill /></Link> */}
+                {<Link to='/MapBars' className='ItemBar'><PinMapFill></PinMapFill></Link>}
             </div>
             <div className='ColBar'>
-                <Link to='/ListBars' className='ItemBar'><ListUl /></Link>
+                <Link to='/ListBars' className='ItemBar'><ListOl /></Link>
             </div>
             <div className='ColBar'>
-                {/* <NavLink to='/MyFavorites' className='ItemBar'><BookmarkHeartFill /></NavLink> */}
-                <NavLink to='/MyFavorites' className='ItemBar'><SuitHeartFill /></NavLink>
+                { <NavLink to='/MyFavorites' className='ItemBar'><BookmarkHeartFill /></NavLink> }
+                {/*<NavLink to='/MyFavorites' className='ItemBar'><SuitHeartFill /></NavLink>*/}
             </div>
             {/* {!auth.user && (<Link to='/login'>MyFavotiteBars</Link>)} */}
         </div>
