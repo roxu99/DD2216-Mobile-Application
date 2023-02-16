@@ -1,4 +1,4 @@
-import  { React,useMemo } from 'react'
+import { React, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,6 +7,7 @@ import { NavBarMobile, NavBarComputer } from './NavBar';
 import { MapContainer, TileLayer, Marker, CircleMarker, SVGOverlay, Tooltip } from 'react-leaflet';
 import './css/MapBarsPage.css'
 import MarkerClusterGroup from "react-leaflet-markercluster";
+import { barNames, barPosition, barIds } from './Data'
 
 export default function MapBarsPage() {
     const position = [59.346, 18.071];
@@ -30,9 +31,10 @@ export default function MapBarsPage() {
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                 />
-                                <BarPosition position={[59.346, 18.071]} price={"50"} id={"0"} name={"First Bar"}></BarPosition>
-                                <BarPosition position={[59.3146, 18.0271]} price={"40"} id={"1"} name={"Second Bar"}></BarPosition>
-                                <BarPosition position={[59.3746, 18.0371]} price={"20"} id={"2"} name={"Third Bar"}></BarPosition>
+                                {barIds.map(id => (
+                                    <BarPosition key={id} position={barPosition.at(id)} price={"50"} id={"0"} name={barNames.at(id)}></BarPosition>
+                                ))
+                                }
                             </MapContainer>
                         </div>
                     </Col>
@@ -41,26 +43,26 @@ export default function MapBarsPage() {
             <NavBarMobile></NavBarMobile>
         </div>
     )
-} 
+}
 
 function BarPosition(props) {
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
     const eventHandlers = useMemo(
         () => ({
-          click() {
-            let path = "../Bar/"+props.id;
-            navigate(path);
-              },
+            click() {
+                let path = "../Bar/" + props.id;
+                navigate(path);
+            },
         }),
         [],
-      )
+    )
     return (
         <div>
             <CircleMarker
                 center={props.position}
                 pathOptions={{ color: 'red' }}
                 radius={20}
-                fillOpacity={0.5} 
+                fillOpacity={0.5}
                 eventHandlers={eventHandlers}>
                 <Tooltip direction='top'>{props.name}</Tooltip>
             </CircleMarker>

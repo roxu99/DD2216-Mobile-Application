@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
-
+import {barNames,barIds} from './Data'
 
 
 
@@ -18,7 +18,7 @@ export default function ListBarsPage() {
     }
 
     function printBar(id) {
-        const barNames = ["Carmen", "Baras Backe", "Lion's", "BlackElk"];
+        // const barNames = ["Carmen", "Baras Backe", "Lion's", "BlackElk"];
         const name = barNames.at(id)
         return (
             <Link to={'../Bar/'+id}>
@@ -29,11 +29,10 @@ export default function ListBarsPage() {
 
 
     function GetListBar() {
-        const barIds = Array.from(Array(4).keys());
         return (
             <div>
                 {barIds.map(id => (
-                    <Row>
+                    <Row key={id}>
                         {printBar(id)}
                     </Row>
                 ))

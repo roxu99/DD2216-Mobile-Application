@@ -11,51 +11,22 @@ import { Modal, Table } from 'react-bootstrap';
 import { popup } from 'leaflet';
 //import BARIMAGES from './images';
 
+import {barNames,barLiked} from '../Data'
+import { Heart, HeartFill } from 'react-bootstrap-icons';
 
 export default function BarGeneric() {
     const param = useParams()
     const barId = param.barId
+    const [liked,ChangeLike] = useState(barLiked[barId])
+
+
+    function LikeBar(){
+        barLiked[barId] = 1- barLiked[barId]
+        ChangeLike(barLiked[barId])
+    }
+
     // const barInfo = get_Info_Bar(barId)
-    const barNames = ["Carmen", "Baras Backe", "Lion Bar","BlackElk"];
-    const barCheapestPrice = [39, 42, 49, 49]
-    const correspondVolume = [40, 40, 50, 50]
-    const barAddress = [    "Tjärhovsgatan 14, 116 21 Stockholm", 
-                            "Götgatan 33, 116 21 Stockholm", 
-                            "Sveavägen 74, 113 59 Stockholm",
-                            "Sveavägen 61, 113 59 Stockholm" ]
-    const suggestion = [[42, 40], [], [], []]
-    const suggBool = true ? suggestion[barId]!='' : false
-
-    // const [show, setShow] = useState(false)
-    // const handleClose = () => setShow(false)
-    // const handleShow = () => setShow(true)
-
-    function ShowOtherSuggestion(bool) {
-        if(bool==true) {
-            return (
-                <div id="suggestion-box" class="boxed">
-                <br></br>
-                <h4>Other suggestion</h4>     
-                    <h3><HandThumbsUp id="oth-thumb-left"></HandThumbsUp>
-                        <mark class="red-price">{suggestion[barId][0]} kr/ {suggestion[barId][1]} cL</mark><HandThumbsDown id="oth-thumb-right"></HandThumbsDown></h3>
-                <br></br>
-                </div>
-            )
-        }
-    }
-
-    function SuggestionForm2() {
-        // pop = window.open('/');
-        var elem = document.getElementById("suggestion-form")
-        // var form = document.createTextNode("zqdefsrdg")
-        // var form = document.createElement("form")
-        // elem.appendChild(form)
-    }
-
-    function SuggestionFormPopUp() {
-        pop = window.open('/NewSuggestionForm');
-    }
-
+    const barNames = ["Carmen", "Baras Backe", "Lion's","BlackElk"];
 
     return (
         <div className='Page'>
@@ -113,6 +84,11 @@ export default function BarGeneric() {
                         <button>Go There</button>
 
                     </Col>
+                </Row>
+                <Row>
+                    {
+                        liked == 1 ? <HeartFill onClick={LikeBar}></HeartFill> : <Heart onClick={LikeBar}></Heart>
+                    }
                 </Row>
             </Container>
             <NavBarMobile></NavBarMobile>
