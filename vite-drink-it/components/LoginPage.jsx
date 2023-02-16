@@ -45,7 +45,7 @@ export default function LoginPage() {
             <form action="/home" id="signup">
                 <p>
                     <label>
-                        Email address:{' '}<br/>
+                        Email address{' '}<br/>
                         <input type="text" name="first_name" onChange={(e) => setUser(e.target.value)}/>
                     </label>
                 </p>
