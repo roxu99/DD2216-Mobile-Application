@@ -1,0 +1,42 @@
+#table-generic {
+    color: white;
+}
+
+.borderless td, .borderless th {
+    border: none
+}
+
+#btn-suggestion {
+    position: relative;
+    left: 20vw;
+}
+
+#val-thumb {
+    position: relative;
+    left: 20px;
+}
+
+#oth-thumb-left {
+    position: relative;
+    right: 15vw
+}
+
+#oth-thumb-right {
+    position: relative;
+    left: 15vw
+}
+
+.red-price {
+    color: red;
+    background-color: #042b29;
+}
+
+.boxed {
+    border: solid 1px;
+    background-color: #042b29;
+}
+
+#fav {
+    position: relative;
+    left: 5vw;
+}

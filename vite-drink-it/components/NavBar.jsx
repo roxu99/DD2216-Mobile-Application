@@ -26,13 +26,16 @@ export const NavBarMobile = () => {
 export const NavBarComputer = () => {
 
     return (
-        <Container fluid id="NavBarComputer" className='d-md-block d-none'>
+        <div id="NavBarComputer" className='d-md-block d-none'>
             <Row>
                 <NavLink to='/MapBars'> <PinMapFill /> Map </NavLink>
             </Row>
             <Row>
                 <NavLink to='/ListBars'> <ListUl /> List </NavLink>
             </Row>
-        </Container>
+            <Row>
+                <NavLink to='/MyFavorites'> <SuitHeartFill /> Favorites </NavLink>
+            </Row>
+        </div>
     )
 }
