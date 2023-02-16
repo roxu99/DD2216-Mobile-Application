@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link, NavLink, Outlet, useSearchParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,6 +7,7 @@ import { NavBarComputer, NavBarMobile } from './NavBar';
 import { Table } from 'react-bootstrap';
 import './css/ListBarPage.css'
 import {barNames,barIds, barLiked, barCheapestPrice, correspondVolume, barAddress} from './Data'
+import { Heart, HeartFill } from 'react-bootstrap-icons';
 
 
 export default function ListBarsPage() {
@@ -16,16 +17,25 @@ export default function ListBarsPage() {
         }
     }
 
+    const [liked,ChangeLike] = useState(barLiked[0], barLiked[1], barLiked[2], barLiked[3])
+
+    function LikeBar(id){
+        barLiked[id] = 1- barLiked[id]
+        ChangeLike(barLiked[id])
+    }
+
+
     function printBar(id) {
         // const barNames = ["Carmen", "Baras Backe", "Lion's", "BlackElk"];
         const name = barNames.at(id)
         return (
             <div class="indiv-bar-box">
-                <Link to={'../Bar/'+id}>
-                    <h2>{name}</h2>
-                </Link>
-            
-
+                <h2><Link to={'../Bar/'+id}>{name}</Link>
+                {
+                    liked == 1 ? <HeartFill id="fav" onClick={LikeBar}></HeartFill> : <Heart id="fav" onClick={LikeBar}></Heart>
+                }
+                </h2>
+                
                 <Table id="table-generic" class="table">
                     <tbody class="borderless">
                         <tr>
