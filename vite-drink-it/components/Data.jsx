@@ -13,5 +13,6 @@ const barAddress = [    "Tjärhovsgatan 14, 116 21 Stockholm",
                         "Götgatan 33, 116 21 Stockholm", 
                         "Sveavägen 74, 113 59 Stockholm",
                         "Sveavägen 61, 113 59 Stockholm" ]
+const suggestion = [[42, 40], [], [], []]
 
-export { barNames, barPosition, barIds, barLiked, barCheapestPrice, correspondVolume, barAddress }
+export { barNames, barPosition, barIds, barLiked, barCheapestPrice, correspondVolume, barAddress, suggestion }
