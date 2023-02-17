@@ -69,3 +69,13 @@ a{
 .Page{
     width: 100%;
 }
+
+#NavBarComputer{
+    background-color: #6f6f6f;
+    position: fixed;
+    left:0;
+    top:0;
+    min-height: 100vh;
+    width: 16.7%;
+    padding-top: 20px;;
+}
