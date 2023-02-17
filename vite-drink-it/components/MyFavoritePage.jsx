@@ -28,17 +28,12 @@ export default function MyFavoriteBars() {
 
     return (
         <div className='Page'>
+            <NavBarComputer></NavBarComputer>
             <Container fluid className="List Bar Content">
                 <Row>
-                    <Col md={2} className="d-md-block d-none">
-                        <NavBarComputer></NavBarComputer>
-                    </Col>
-                    <Col md={10} sm={12} xs={12}>
+                    <Col md={8} sm={12} xs={12} className="offset-md-3">
                         <h2>My Favorite Bars</h2>
-
                         {list_like}
-
-
                     </Col>
                     <Outlet></Outlet>
                 </Row>

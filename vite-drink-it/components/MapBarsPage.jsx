@@ -14,12 +14,10 @@ export default function MapBarsPage() {
     // const position = [51.505, -0.09]
     return (
         <div className='Page'>
+            <NavBarComputer></NavBarComputer>
             <Container fluid className="Map Bar Content">
                 <Row>
-                    <Col md={2} className="d-md-block d-none">
-                        <NavBarComputer></NavBarComputer>
-                    </Col>
-                    <Col md={10} sm={12} className='Map'>
+                    <Col md={10} sm={12} className='Map offset-md-2'>
                         <div id="map">
                             <MapContainer
                                 className="markercluster-map"

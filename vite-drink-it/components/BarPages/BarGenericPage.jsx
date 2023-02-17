@@ -66,12 +66,10 @@ export default function BarGeneric() {
 
     return (
         <div className='Page'>
+            <NavBarComputer></NavBarComputer>
             <Container className="Bar Content">
                 <Row>
-                    <Col md={2} className="d-md-block d-none">
-                        <NavBarComputer></NavBarComputer>
-                    </Col>
-                    <Col md={10} sm={12} xs={12} className='Bar information'>
+                    <Col md={8} sm={12} xs={12} className='Bar information offset-md-3'>
                         <h2 className="title">{barNames.at(barId)}                   
                             {
                                 liked == 1 ? <HeartFill id="fav" onClick={LikeBar}></HeartFill> : <Heart id="fav" onClick={LikeBar}></Heart>

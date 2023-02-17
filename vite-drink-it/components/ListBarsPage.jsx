@@ -37,12 +37,10 @@ export default function ListBarsPage() {
 
     return (
         <div className='Page'>
+            <NavBarComputer></NavBarComputer>
             <Container fluid className="List Bar Content">
                 <Row>
-                    <Col md={2} className="d-md-block d-none">
-                        <NavBarComputer></NavBarComputer>
-                    </Col>
-                    <Col xs={12} md={10}>
+                    <Col xs={12} md={8} className="offset-md-3">
                         <h2>List of Bars</h2>
                         <button id="open" onClick={() => setSearchParams({ filter: 'open' })}>
                             Currently Open

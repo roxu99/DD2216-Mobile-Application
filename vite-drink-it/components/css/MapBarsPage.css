@@ -13,3 +13,8 @@
     box-shadow: none;
     border: none;
 }
+
+.Map{
+    padding-left: 0;
+    padding-right: 0;
+}
