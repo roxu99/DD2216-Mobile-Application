@@ -11,21 +11,20 @@ import { Modal, Table } from 'react-bootstrap';
 import { popup } from 'leaflet';
 //import BARIMAGES from './images';
 
-import {barNames,barLiked} from '../Data'
 import { Heart, HeartFill } from 'react-bootstrap-icons';
+import { barCheapestPrice,barLiked, barNames, suggestion, correspondVolume } from '../Data';
 
 export default function BarGeneric() {
     const param = useParams()
     const barId = param.barId
     // const barInfo = get_Info_Bar(barId)
-    const barNames = ["Carmen", "Baras Backe", "Lion Bar","BlackElk"];
-    const barCheapestPrice = [39, 42, 49, 49]
-    const correspondVolume = [40, 40, 50, 50]
-    const barAddress = [    "Tjärhovsgatan 14, 116 21 Stockholm", 
-                            "Götgatan 33, 116 21 Stockholm", 
-                            "Sveavägen 74, 113 59 Stockholm",
-                            "Sveavägen 61, 113 59 Stockholm" ]
-    const suggestion = [[42, 40], [], [], []]
+    // const barNames = ["Carmen", "Baras Backe", "Lion Bar","BlackElk"];
+    // const barCheapestPrice = [39, 42, 49, 49]
+    // const correspondVolume = [40, 40, 50, 50]
+    // const barAddress = [    "Tjärhovsgatan 14, 116 21 Stockholm", 
+    //                         "Götgatan 33, 116 21 Stockholm", 
+    //                         "Sveavägen 74, 113 59 Stockholm",
+    //                         "Sveavägen 61, 113 59 Stockholm" ]
     const suggBool = true ? suggestion[barId]!='' : false
 
     const [liked,ChangeLike] = useState(barLiked[barId])
@@ -41,11 +40,11 @@ export default function BarGeneric() {
     function ShowOtherSuggestion(bool) {
         if(bool==true) {
             return (
-                <div id="suggestion-box" class="boxed">
+                <div id="suggestion-box" className="boxed">
                 <br></br>
                 <h4>Other suggestion</h4>     
                     <h3><HandThumbsUp id="oth-thumb-left"></HandThumbsUp>
-                        <mark class="red-price">{suggestion[barId][0]} kr/ {suggestion[barId][1]} cL</mark><HandThumbsDown id="oth-thumb-right"></HandThumbsDown></h3>
+                        <mark className="red-price">{suggestion[barId][0]} kr/ {suggestion[barId][1]} cL</mark><HandThumbsDown id="oth-thumb-right"></HandThumbsDown></h3>
                 <br></br>
                 </div>
             )
@@ -73,7 +72,7 @@ export default function BarGeneric() {
                         <NavBarComputer></NavBarComputer>
                     </Col>
                     <Col md={10} sm={12} xs={12} className='Bar information'>
-                        <h2 class="title">{barNames.at(barId)}                   
+                        <h2 className="title">{barNames.at(barId)}                   
                             {
                                 liked == 1 ? <HeartFill id="fav" onClick={LikeBar}></HeartFill> : <Heart id="fav" onClick={LikeBar}></Heart>
                             }
@@ -83,15 +82,15 @@ export default function BarGeneric() {
                         <img alt="Bar's image" src={barImage0} style={{height:'20vh'}}></img>
                         
 
-                        <Table id="table-generic" class="table">
-                            <tbody class="borderless">
+                        <Table id="table-generic" className="table">
+                            <tbody className="borderless">
                                 {/* <tr>
                                     <th scope="row"> Address</th>
                                     <td>{barAddress[barId]}</td>
                                 </tr> */}
                                 <tr>
                                     <th scope="row">Cheapest Price</th>
-                                    <td class="red-price">{barCheapestPrice[barId]} kr/ {correspondVolume[barId]}cl</td>
+                                    <td className="red-price">{barCheapestPrice[barId]} kr/ {correspondVolume[barId]}cl</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Price per liter</th>

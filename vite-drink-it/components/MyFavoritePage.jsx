@@ -4,18 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
-import { barNames, barLiked, barIds } from './Data'
+import { barNames, barLiked, correspondVolume, barCheapestPrice } from './Data'
+import printBar from './printBarfunction';
 
 
 export default function MyFavoriteBars() {
-    function printBar(id) {
-        const name = barNames.at(id)
-        return (
-            <Link to={'../Bar/' + id}>
-                {name}
-            </Link>
-        )
-    }
 
     const barLinkStyle = ({ isActive }) => {
         return {
