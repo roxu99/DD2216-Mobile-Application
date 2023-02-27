@@ -17,6 +17,7 @@ import BarGeneric from '../components/BarPages/BarGenericPage'
 import MyFavoriteBars from '../components/MyFavoritePage';
 import { AuthProvider } from '../utils/authentification';
 import PopUpForm from '../components/BarPages/BarPopUpForm'
+import Admin from '../components/AdminPage';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
                 <Route path='NewSuggestionForm' element={<PopUpForm></PopUpForm>}></Route>
                 <Route path='/MapBars' element={<MapBarsPage></MapBarsPage>}> </Route>
                 <Route path='/MyFavorites' element={<MyFavoriteBars></MyFavoriteBars>}> </Route>
+                <Route path='/Admin' element={<Admin></Admin>}> </Route>
                 <Route path='*' element={<NoMatch></NoMatch>} ></Route>
 
                 {/* <Route path='/ListBar/BarasBacke' element={<BarBarasBacke></BarBarasBacke>}> </Route> */}
