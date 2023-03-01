@@ -1,15 +1,21 @@
 import React from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
 import { barNames, barLiked, correspondVolume, barCheapestPrice } from './Data'
 import printBar from './printBarfunction';
+import { useAuth } from '../utils/authentification';
 
 
 export default function MyFavoriteBars() {
+    const context = useAuth()
 
+    if (context.autorisation < 1) {
+        const navigate = useNavigate()
+        navigate("/login")
+    }
     const barLinkStyle = ({ isActive }) => {
         return {
             fontWeight: isActive ? 'bold' : 'normal',

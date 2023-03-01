@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
-import { Link, NavLink, Outlet, useSearchParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, NavLink, Outlet, useNavigate, useSearchParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarComputer, NavBarMobile } from './NavBar';
 import { Table } from 'react-bootstrap';
 import './css/ListBarPage.css'
-import {barNames,barIds, barLiked, barCheapestPrice, correspondVolume, barAddress} from './Data'
+import { barNames, barIds, barLiked, barCheapestPrice, correspondVolume, barAddress } from './Data'
 import printBar from './printBarfunction';
+import { useAuth } from '../utils/authentification';
 
 export default function ListBarsPage() {
+    const context = useAuth()
+
+    if (context.autorisation < 1) {
+        const navigate = useNavigate()
+        navigate("/login")
+    }
     const barLinkStyle = ({ isActive }) => {
         return {
             fontWeight: isActive ? 'bold' : 'normal',
@@ -57,7 +64,7 @@ export default function ListBarsPage() {
                             )}
                         </div>
                         <br></br>
-                        
+
                         <GetListBar></GetListBar>
 
 

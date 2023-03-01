@@ -1,5 +1,5 @@
 import React, { useCallback, useState}from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,11 +13,18 @@ import { popup } from 'leaflet';
 
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 import { barCheapestPrice,barLiked, barNames, suggestion, correspondVolume } from '../Data';
+import { useAuth } from '../../utils/authentification';
 
 export default function BarGeneric() {
     const param = useParams()
     const barId = param.barId
-    // const barInfo = get_Info_Bar(barId)
+    const context = useAuth()
+
+    if (context.autorisation < 1) {
+        const navigate = useNavigate()
+        navigate("/login")
+    }
+     // const barInfo = get_Info_Bar(barId)
     // const barNames = ["Carmen", "Baras Backe", "Lion Bar","BlackElk"];
     // const barCheapestPrice = [39, 42, 49, 49]
     // const correspondVolume = [40, 40, 50, 50]

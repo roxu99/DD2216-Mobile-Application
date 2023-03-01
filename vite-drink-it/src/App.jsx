@@ -20,7 +20,6 @@ import PopUpForm from '../components/BarPages/BarPopUpForm'
 import Admin from '../components/AdminPage';
 
 function App() {
-
     return (
         <AuthProvider>
             <Routes>

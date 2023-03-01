@@ -8,9 +8,15 @@ import { MapContainer, TileLayer, Marker, CircleMarker, SVGOverlay, Tooltip } fr
 import './css/MapBarsPage.css'
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import { barNames, barPosition, barIds } from './Data'
+import { useAuth } from '../utils/authentification';
 
 export default function MapBarsPage() {
-    const position = [59.346, 18.071];
+    const context = useAuth()
+
+    if (context.autorisation < 1) {
+        const navigate = useNavigate()
+        navigate("/login")
+    }const position = [59.346, 18.071];
     // const position = [51.505, -0.09]
     return (
         <div className='Page'>
