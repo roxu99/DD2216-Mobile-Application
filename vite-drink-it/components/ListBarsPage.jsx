@@ -23,10 +23,6 @@ export default function ListBarsPage() {
         }
     }
 
-
-
-
-
     function GetListBar() {
         return (
             <div>
