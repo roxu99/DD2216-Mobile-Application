@@ -1,13 +1,22 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useAuth } from '../utils/authentification';
+
+
 
 export default function SignInPage() {
-
+    const AuthContext = useAuth()
     const navigate = useNavigate();
-    const handleOnClick = useCallback( () => navigate('/ListBars'));
+    const handleOnClick = useCallback(() => {
+        AuthContext.login(username, 1)
+        navigate('/ListBars')
+    });
+    const [username, ChangeUserName] = useState('')
+    const [password, ChangePassword] = useState('')
+
 
     return (
 
@@ -25,17 +34,17 @@ export default function SignInPage() {
 
             <Col xs={12}>
                 <h2>New?</h2>
-                <form action="/home">
+                <form action="/home" onSubmit={handleOnClick}>
                     <p>
-                        <label>Email address</label><br/>
-                        <input type="text" name="first_name" required />
+                        <label>Email address</label><br />
+                        <input type="text" name="first_name" onChange={(e) => ChangeUserName(e.target.value)} required />
                     </p>
                     <p>
-                        <label>Password</label><br/>
-                        <input type="password" name="password" required />
+                        <label>Password</label><br />
+                        <input type="password" name="password" onChange={(e) => ChangePassword(e.target.value)} required />
                     </p>
                     <p>
-                        <button id="sign_btn" onClick={handleOnClick}>
+                        <button id="sign_btn" type="submit">
                             SignIn
                         </button>
                     </p>
