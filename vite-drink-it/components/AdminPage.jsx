@@ -12,8 +12,14 @@ import { barNames, barPosition, barIds } from './Data'
 import { usePermissions } from 'react-admin'
 import axios from 'axios';
 import { CollectionFill } from 'react-bootstrap-icons';
+import { useAuth } from '../utils/authentification';
 
 export default function Admin() {
+    const context = useAuth()
+    const navigate = useNavigate();
+    if(context.autorisation<2){
+        navigate('/ListBars')
+    }
     const permission = 'admin'//usePermissions()
     const [research, ChangResearch] = useState('')
     const [id, ChangeID] = useState('')
@@ -23,25 +29,16 @@ export default function Admin() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         ChangeList([])
-        //        console.log(`The name you entered was: ${id}`)
-        //        const test_query = "https://www.wikidata.org/w/api.php?action=wbgetentities&origin=*&sites=enwiki&props=descriptions&languages=en&format=json&titles=" + research
-        //        const res = await axios.get(test_query)
-        //        ChangeID(Object.keys(res.data.entities)[0])
-        //ChangeDescrib(res.data.entities[Object.keys(res.data.entities)[0]]["descriptions"]["en"]["value"])
         const web_coord = "https://nominatim.openstreetmap.org/search?city=" + encodeURI(research) + "&format=json"
         var test = await axios.get(web_coord)
-        console.log(test.data)
         if (test.data.length > 0) {
-            console.log(test.data[0]["boundingbox"])
             const query = "[out:json];node[amenity=bar](" + test.data[0]["boundingbox"][0] + "," + test.data[0]["boundingbox"][2] + "," + test.data[0]["boundingbox"][1] + "," + test.data[0]["boundingbox"][3] + ");out;"
             const web = "https://overpass-api.de/api/interpreter?data="
             const res_2 = await axios.get(web + encodeURI(query))
-            console.log(res_2.data.elements.length)
             var text = "We have found " + res_2.data.elements.length.toString() + " in this city :"
             var list = []
             for (var i = 0; i < res_2.data.elements.length; i++) {
                 list.push(res_2.data.elements[i]["tags"]["name"])
-                //text = text + "<div class=\"row\">" + res_2.data.elements[i]["tags"]["name"] + "</div>"
             }
             ChangeText(text)
             ChangeList(list)
@@ -53,7 +50,7 @@ export default function Admin() {
     return (
         <div className="Page">
             <NavBarComputer></NavBarComputer>
-            {permission === 'admin' &&
+            {context.autorisation === 2 &&
                 <Container className='justify-center'>
                     <form method='post' onSubmit={handleSubmit}>
                         <Row>
