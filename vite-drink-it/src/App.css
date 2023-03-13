@@ -62,8 +62,8 @@ a{
 }
 
 .ItemBar>svg{
-    width: min(10vw,35px);
-    height: min(10vw,35px);
+    width: min(10vw,30px);
+    height: min(10vw,30px);
 }
 
 .Page{
