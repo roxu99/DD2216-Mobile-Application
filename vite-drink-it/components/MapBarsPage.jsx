@@ -1,14 +1,16 @@
-import { React, useMemo } from 'react'
+import { React, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { NavBarMobile, NavBarComputer } from './NavBar';
-import { MapContainer, TileLayer, Marker, CircleMarker, SVGOverlay, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, CircleMarker, SVGOverlay, Tooltip, useMap } from 'react-leaflet';
 import './css/MapBarsPage.css'
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import { barNames, barPosition, barIds, barCheapestPrice } from './Data'
 import { useAuth } from '../utils/authentification';
+import { Icon1Circle } from 'react-bootstrap-icons';
+import { Icon } from 'leaflet';
 
 export default function MapBarsPage() {
     const context = useAuth()
@@ -39,6 +41,7 @@ export default function MapBarsPage() {
                                     <BarPosition key={id} position={barPosition.at(id)} price={barCheapestPrice.at(id)} id={barIds.at(id)} name={barNames.at(id)}></BarPosition>
                                 ))
                                 }
+                                <LocationMarker></LocationMarker>
                             </MapContainer>
                         </div>
                     </Col>
@@ -101,4 +104,34 @@ function BarPosition(props) {
                 </div>
             }
         </div>)
+}
+
+function LocationMarker() {
+    const [position, setPosition] = useState(null);
+    const [bbox, setBbox] = useState([]);
+
+    const map = useMap();
+
+    useEffect(() => {
+        map.locate().on("locationfound", function (e) {
+            setPosition(e.latlng);
+            map.flyTo(e.latlng, 15);
+            const radius = e.accuracy;
+            const circle = L.circle(e.latlng, radius, { fillOpacity: 0.1, stroke:false });
+            circle.addTo(map);
+            const radius_2 = 5;
+            const circle_2 = L.circle(e.latlng, radius_2, { fillOpacity: 1, color:'blue', stroke:false });
+            circle_2.addTo(map);
+            setBbox(e.bounds.toBBoxString().split(","));
+        });
+    }, [map]);
+
+    return position === null ? null : (
+        <CircleMarker
+            center={position}
+            pathOptions={{ color: 'blue' }}
+            radius={2}
+            fillOpacity={1}>
+        </CircleMarker>
+    );
 }
